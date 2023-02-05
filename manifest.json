@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+
+  "name": "ads-google-anas",
+  "description": "Show ads on a specific page",
+  "version": "1.0",
+
+  "action": {
+    "default_popup": "popup.html"},
+
+  
+  "permissions": ["tabs","storage", "activeTab", "scripting","nativeMessaging"],
+ 
+  "background": {
+    "service_worker": "background.js" 
+  },
+
+  "web_accessible_resources": [
+    {
+  "resources": [  "images/*.jpg" ],
+  "matches": ["https://www.google.com/*"]
+    },
+    {
+      "resources": [  "sens.js" , "Views.js" , "adsfloatingbox.js"],
+      "matches": ["<all_urls>"]
+        }
+  ],
+
+  "content_scripts":[
+    {
+      "matches":["<all_urls>"],
+      "js":["myScript.js" ,"tracks.js"]
+    }
+  ] 
+
+  
+}
